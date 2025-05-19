@@ -432,3 +432,87 @@ header {
 .btn-clear.hidden {
   display: none !important;
 }
+
+.meaning-box .word-block {
+  margin-bottom: 10px;
+}
+
+.meaning-box .word-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #388e3c;
+  letter-spacing: 1px;
+}
+
+.meaning-box .main-word {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #388e3c;
+}
+
+.meaning-box .part-of-speech {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #558b2f;
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 2px 10px;
+  text-transform: capitalize;
+}
+
+.meaning-box .phonetic-row {
+  margin: 4px 0 0 0;
+  font-style: italic;
+  color: #43a047;
+  font-size: 1.08rem;
+  background: #f1f8e9;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 2px 10px;
+}
+
+.meaning-box .phonetic-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 0 0;
+}
+
+.meaning-box .phonetic {
+  font-style: italic;
+  font-weight: 500;
+  color: #43a047;
+  font-size: 1.08rem;
+  background: #f1f8e9;
+  border-radius: 8px;
+  padding: 2px 10px;
+  display: inline-block;
+}
+
+.meaning-box .divider-row {
+  margin: 6px 0 6px 0;
+  color: #bdbdbd;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+}
+
+.meaning-box .volume-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.meaning-box .volume-row .main-word {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #388e3c;
+}
+
+.meaning-box .volume {
+  margin-left: auto;
+}

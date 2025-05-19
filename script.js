@@ -36,15 +36,19 @@ function data(result, word) {
       const box = document.createElement("div");
       box.className = "meaning-box";
       box.innerHTML = `
-        <div class="word">
-          <p>${entry.word}</p>
-          <p>${meaning.partOfSpeech || ""}</p>
-          <span>${phonetic}</span>
-          ${
-            audioSrc
-              ? `<div class="volume" title="Play pronunciation" tabindex="0" role="button" aria-label="Play pronunciation for ${word}"><i class="fa-solid fa-volume-high"></i></div>`
-              : ""
-          }
+        <div class="word-block">
+          <div class="word-row">
+            <span class="main-word">${entry.word}</span>
+            <span class="part-of-speech">${meaning.partOfSpeech || ""}</span>
+          </div>
+          <div class="phonetic-volume-row">
+            <span class="phonetic">${phonetic}</span>
+            ${
+              audioSrc
+                ? `<div class="volume" title="Play pronunciation" tabindex="0" role="button" aria-label="Play pronunciation for ${word}"><i class="fa-solid fa-volume-high"></i></div>`
+                : ""
+            }
+          </div>
         </div>
         <div class="meaning">
           <strong>Meaning:</strong>
