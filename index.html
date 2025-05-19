@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon Dictionary Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>📖</text></svg>">
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/fa5c94950d.js" crossorigin="anonymous"></script>
+
+  <!-- Material Icons for close button -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <title>English Dictionary</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header>English Dictionary</header>
+
+    <div class="search">
+      <input
+        type="text"
+        placeholder="Search a word"
+        aria-label="Search a word"
+        spellcheck="false"
+        autocomplete="off"
+      />
+      <button class="btn-search" aria-label="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="btn-clear" aria-label="Clear search">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <p class="info-text">
+      Type any existing word and press enter or click search to get meaning,
+      example, synonyms, etc.
+    </p>
+
+    <ul>
+      <div class="content"></div>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

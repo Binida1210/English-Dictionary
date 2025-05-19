@@ -1,0 +1,434 @@
+/* Reset cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #e6f2e6; /* xanh lá nhạt làm nền */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #333;
+}
+
+/* Wrapper chính */
+.wrapper {
+  background: #fff;
+  width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.25);
+  padding: 30px 25px 40px;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng hover cho wrapper */
+.wrapper.active {
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.5);
+}
+
+/* Header */
+header {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #388e3c;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 1.1px;
+}
+
+/* --- Glassmorphism Search Bar --- */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px 0 rgba(76,175,80,0.18);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(76,175,80,0.18);
+  padding: 0 0 0 18px;
+  margin-bottom: 28px;
+  min-height: 56px;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.search:focus-within {
+  box-shadow: 0 12px 32px 0 rgba(76,175,80,0.28);
+  border: 1.5px solid #5b8468;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.18rem;
+  background: transparent;
+  color: #2e7d32;
+  caret-color: #43ea7a;
+  padding: 16px 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.search input::placeholder {
+  color: #a5d6a7;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* --- Glassmorphism Search Button --- */
+.btn-search {
+  background: rgba(76, 175, 80, 0.18);
+  border: none;
+  color: #5b8468;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0;
+  margin-right: 6px;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(76, 175, 80, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: 
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+}
+
+.btn-search:active {
+  transform: scale(0.93);
+  box-shadow: 0 1px 4px rgba(76, 175, 80, 0.08);
+}
+
+.btn-search:hover,
+.btn-search:focus,
+.btn-clear:hover,
+.btn-clear:focus {
+  color: #fff;
+  background: linear-gradient(135deg, #5b8468 60%, #388e3c 100%);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.18);
+}
+
+/* Spinner khi loading */
+.btn-search .fa-spinner {
+  color: #5b8468;
+  font-size: 1.2rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Nút close chuyên nghiệp, tối giản --- */
+.btn-clear {
+  background: rgba(255,255,255,0.92);
+  border: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.7rem;
+  color: #bdbdbd;
+  cursor: pointer;
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition:
+    color 0.18s,
+    background 0.18s,
+    box-shadow 0.18s;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search input:not(:placeholder-shown) ~ .btn-clear {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-clear:active {
+  background: #e0f2f1;
+  color: #388e3c;
+  box-shadow: 0 1px 4px rgba(76, 175, 80, 0.08);
+}
+
+.btn-clear:hover,
+.btn-clear:focus {
+  background: #5b8468;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+}
+
+.btn-clear .material-icons {
+  font-size: 1.7rem;
+  transition: color 0.18s;
+}
+
+.btn-clear:focus-visible {
+  outline: 2px solid #5b8468;
+  outline-offset: 2px;
+}
+
+/* Ripple effect */
+.btn-clear::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(67,234,122,0.18);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(.4,2,.6,1), height 0.3s cubic-bezier(.4,2,.6,1), opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-clear:active::after {
+  width: 120%;
+  height: 120%;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Info text */
+.info-text {
+  font-size: 0.9rem;
+  color: #7a7a7a;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Kết quả hiển thị */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Box từng nghĩa */
+.meaning-box {
+  background: #f0f9f0;
+  border-left: 5px solid #4caf50;
+  padding: 15px 20px 18px 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgb(76 175 80 / 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.meaning-box:hover {
+  box-shadow: 0 6px 14px rgb(76 175 80 / 0.25);
+}
+
+/* Từ và phiên âm */
+.meaning-box .word {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e0f2f1;
+  padding-bottom: 6px;
+}
+
+.meaning-box .word p:first-child {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #388e3c;
+  letter-spacing: 1px;
+  margin-right: 1.5rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(76,175,80,0.08);
+}
+
+.meaning-box .word p:nth-child(2) {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #558b2f;
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 2px 10px;
+  margin-right: 1rem;
+  text-transform: capitalize;
+}
+
+.meaning-box .word span {
+  font-style: italic;
+  font-weight: 500;
+  color: #43a047;
+  font-size: 1.05rem;
+  background: #f1f8e9;
+  border-radius: 8px;
+  padding: 2px 10px;
+}
+
+/* Các phần Meaning, Example, Synonyms */
+.meaning-box .meaning,
+.meaning-box .example,
+.meaning-box .synonyms {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #3c763d;
+}
+
+.meaning-box strong {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.meaning-box .meaning span,
+.meaning-box .example span,
+.meaning-box .synonyms .list span {
+  margin-left: 8px;
+  font-weight: 400;
+  font-style: normal;
+  color: #466c2e;
+}
+
+/* Synonyms danh sách */
+.meaning-box .synonyms .list {
+  margin-top: 6px;
+}
+
+.meaning-box .synonyms .list span {
+  display: inline-block;
+  background: #a5d6a7;
+  color: #1b5e20;
+  padding: 4px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.meaning-box .synonyms .list span:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Nút loai */
+.volume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.10);
+  color: #43a047;
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+  transition:
+    background 0.18s,
+    color 0.18s,
+    box-shadow 0.18s,
+    transform 0.12s;
+  outline: none;
+  border: none;
+  position: relative;
+}
+
+.volume:hover,
+.volume:focus {
+  background: #5b8468c5;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.18);
+  transform: scale(1.08);
+}
+
+.volume:active {
+  background: #e0f2f1;
+  color: #5b8468c5;
+  box-shadow: 0 1px 4px rgba(76, 175, 80, 0.08);
+}
+
+.volume i {
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.volume:focus-visible {
+  outline: 2px solid #43ea7a;
+  outline-offset: 2px;
+}
+
+/* Responsive nhỏ */
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+    padding: 20px 15px 30px;
+  }
+
+  header {
+    font-size: 1.6rem;
+  }
+
+  .search input {
+    font-size: 1rem;
+  }
+
+  .meaning-box .word p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive cho search bar */
+@media (max-width: 600px) {
+  .wrapper {
+    width: 99%;
+    padding: 10px 2vw 20px;
+  }
+  .search {
+    min-height: 46px;
+    padding-left: 8px;
+  }
+  .btn-search {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+  .btn-clear {
+    width: 32px;
+    height: 32px;
+    right: 48px;
+    font-size: 1.2rem;
+  }
+  .search input {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+/* Ẩn/hiện nút */
+.btn-search.hidden,
+.btn-clear.hidden {
+  display: none !important;
+}
